@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Magento\Checkout\Block\Onepage\Success" type="Checkout\OneStep\Block\Onepage\Success" />
+    <preference for="Magento\Checkout\Block\Onepage" type="Checkout\OneStep\Block\Onepage" />
+    <type name="Magento\Checkout\Model\CompositeConfigProvider">
+        <arguments>
+            <argument name="configProviders" xsi:type="array">
+                <item name="iwd_opc_extended_checkout_config"
+                      xsi:type="object">Checkout\OneStep\Model\ExtendedCheckoutConfigProvider</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Magento\Framework\Url\SecurityInfo">
+        <arguments>
+            <argument name="secureUrlList" xsi:type="array">
+                <item name="checkout_index" xsi:type="string">/onepage</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Checkout\OneStep\Block\Onepage">
+        <arguments>
+            <argument name="layoutProcessors" xsi:type="array">
+                <item name="updateLayout" xsi:type="object">Checkout\OneStep\Block\Checkout\UpdateLayoutProcessor</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Magento\Directory\Model\ResourceModel\Country\Collection">
+        <plugin name="iwd_opc_country_collection"
+                type="Checkout\OneStep\Plugin\Country\Collection"/>
+    </type>
+    <type name="Magento\Checkout\Controller\Index\Index">
+        <plugin name="iwd_opc_checkout_controller"
+                type="Checkout\OneStep\Plugin\Checkout\Controller\Index\Index"/>
+    </type>
+    <type name="Magento\Checkout\Model\DefaultConfigProvider">
+        <plugin name="iwd_opc_get_checkout_url_dcp"
+                type="Checkout\OneStep\Plugin\Checkout\DefaultConfigProvider"/>
+    </type>
+    <type name="Magento\Checkout\Block\Onepage\Link">
+        <plugin name="iwd_opc_get_checkout_url_onepage_link"
+                type="Checkout\OneStep\Plugin\Checkout\Block\Onepage\Link"/>
+    </type>
+    <type name="Magento\Checkout\Block\Cart\Sidebar">
+        <plugin name="iwd_opc_get_checkout_url_cart_sidebar"
+                type="Checkout\OneStep\Plugin\Checkout\Block\Cart\Sidebar"/>
+    </type>
+    <type name="Magento\Checkout\Block\Link">
+        <plugin name="iwd_opc_get_checkout_url_link"
+                type="Checkout\OneStep\Plugin\Checkout\Block\Link"/>
+    </type>
+    <type name="Magento\Checkout\Block\Cart">
+        <plugin name="iwd_opc_get_checkout_url_cart"
+                type="Checkout\OneStep\Plugin\Checkout\Block\Cart"/>
+    </type>
+</config>

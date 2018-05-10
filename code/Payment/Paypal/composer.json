@@ -1,0 +1,22 @@
+{
+  "name": "payment/module-paypal",
+  "description": "Palpal payment integration ",
+  "type": "magento2-module",
+  "license": "proprietary",
+  "authors": [
+    {
+      "email": "arshads@3esofttech.com",
+      "name": "PayPal"
+    }
+  ],
+  "minimum-stability": "dev",
+  "require": {},
+  "autoload": {
+    "psr-4": {
+      "Payment\\Paypal\\": ""
+    },
+    "files": [
+      "registration.php"
+    ]
+  }
+}

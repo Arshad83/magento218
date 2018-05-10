@@ -1,0 +1,29 @@
+{
+  "name": "checkout/module-onestep",
+  "description": "OneStep Checkout page",
+  "type": "magento2-module",
+  "license": "proprietary",
+  "version": "3.1.0",
+  "authors": [
+    {
+      "email": "info@mage2gen.com",
+      "name": "Mage2Gen"
+    }
+  ],
+
+  "require": {
+    "magento/module-checkout": "100.1.*",
+    "magento/module-sales": "100.1.*",
+    "magento/module-quote": "100.1.*",
+    "magento/module-payment": "100.1.*",
+    "php": "~5.6.0|~7.0.0|~7.1.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Checkout\\OneStep\\": ""
+    },
+    "files": [
+      "registration.php"
+    ]
+  }
+}

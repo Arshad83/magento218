@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Checkout\OneStep\Api\BalanceManagementInterface" type="Checkout\OneStep\Model\BalanceManagement"/>
+    <preference for="Checkout\OneStep\Api\RewardManagementInterface" type="Checkout\OneStep \Model\RewardManagement" />
+    <preference for="Magento\Downloadable\Observer\IsAllowedGuestCheckoutObserver" type="Checkout\OneStep\Observer\Downloadable\IsAllowedGuestCheckoutObserver"/>
+    <preference for="Magento\Checkout\Helper\Data" type="Checkout\OneStep\Helper\Checkout\Data"/>
+    <type name="Magento\GiftCardAccount\Model\Giftcardaccount">
+        <plugin name="checkout_onestep_giftcardaccount_plugin" type="Checkout\OneStep\Plugin\GiftCardAccount" />
+    </type>
+    <type name="Magento\Config\Model\Config">
+        <plugin name="checkout_onestep_save_config_plugin" type="Checkout\OneStep\Plugin\SaveConfig"/>
+    </type>
+    <type name="Magento\Checkout\Api\PaymentInformationManagementInterface">
+        <plugin name="checkout_onestep_save_comment_subscribe" type="Checkout\OneStep\Plugin\Checkout\PaymentInformationManagement"/>
+    </type>
+    <type name="Magento\Checkout\Api\GuestPaymentInformationManagementInterface">
+        <plugin name="checkout_onestep_save_comment_subscribe" type="Checkout\OneStep\Plugin\Checkout\GuestPaymentInformationManagement"/>
+    </type>
+    <type name="Magento\Quote\Api\PaymentMethodManagementInterface">
+        <plugin name="checkout_onestep_save_comment_subscribe" type="Checkout\OneStep\Plugin\Checkout\PaymentMethodManagement"/>
+    </type>
+    <type name="Magento\Paypal\Model\AbstractConfig">
+        <plugin name="checkout_onestep_paypal_config" type="Checkout\OneStep\Plugin\Payments\Paypal\Config"/>
+    </type>
+</config>
